@@ -1,0 +1,27 @@
+OnlineVotingSystem/
+├── src/
+│   ├── com.voting.dao/
+│   │   ├── VoterDAO.java
+│   │   ├── ElectionDAO.java
+│   │   ├── CandidateDAO.java
+│   │   └── VoteDAO.java
+│   ├── com.voting.model/
+│   │   ├── Voter.java
+│   │   ├── Election.java
+│   │   ├── Candidate.java
+│   │   └── Vote.java
+│   ├── com.voting.controller/
+│   │   ├── LoginServlet.java
+│   │   ├── RegisterServlet.java
+│   │   ├── VotingServlet.java
+│   │   ├── AdminDashboardServlet.java
+│   │   └── ResultServlet.java
+│   └── com.voting.util/
+│       └── DBConnection.java
+├── web/
+│   ├── index.html
+│   ├── login.jsp
+│   ├── register.jsp
+│   ├── voting.jsp
+│   └── results.jsp
+└── pom.xml (if using Maven)
