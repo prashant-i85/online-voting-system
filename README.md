@@ -16,6 +16,14 @@ This program helps its verified users to cast votes for candidates in an electio
 - **Improved UI/UX**: Advanced styling and animations for a better user experience.
 - **Future Improvements**: Use of HTML or CSS enhancements.
 
+
+## Setup Instructions
+1. Clone the repository from GitHub.
+2. Set up your MySQL database using the `schema.sql` file.
+3. Update the `DBConnection.java` file with your database credentials.
+4. Deploy the project to a server or local environment.
+5. Access the application through your browser.
+
 ## Usage
 1. Register as a user.
 2. Log in with your credentials.
