@@ -8,7 +8,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Online Voting System</h1>
-        <form action="servlets/LoginServlet" method="post">
+        <form action="LoginServlet" method="post">
             <input type="hidden" name="action" value="login">
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
