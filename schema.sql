@@ -17,10 +17,8 @@ CREATE TABLE votes (
     FOREIGN KEY (voter_id) REFERENCES users(id)
 );
 
-
 CREATE TABLE candidates (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     party VARCHAR(255) NOT NULL
 );
-
