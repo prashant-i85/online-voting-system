@@ -22,7 +22,7 @@
         </c:if>
 
         <!-- Candidate List -->
-        <form action="VoteServlet" method="post">
+        <form action="servlets/VoteServlet" method="post">
             <div class="row">
                 <c:forEach var="candidate" items="${candidates}">
                     <div class="col-md-4">
