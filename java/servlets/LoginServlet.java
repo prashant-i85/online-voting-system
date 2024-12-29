@@ -1,9 +1,9 @@
-package com.voting.controller;
+package servlets;
 
-import com.voting.dao.VoterDAO;
-import com.voting.dao.CandidateDAO;
-import com.voting.model.Voter;
-import com.voting.model.Candidate;
+import dao.VoterDAO;
+import dao.CandidateDAO;
+import model.Voter;
+import model.Candidate;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("voter", voter);
                 response.sendRedirect("voting.jsp");
             } else {
-                response.sendRedirect("login.jsp?error=Invalid credentials");
+                response.sendRedirect("WEB-INF/login.jsp?error=Invalid credentials");
             }
         } else if ("vote".equals(action)) {
             // Handle voting
@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
                     // Retrieve updated candidates list
                     List<Candidate> candidates = candidateDAO.getCandidates();
                     request.setAttribute("candidates", candidates);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("voting.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/voting.jsp");
                     dispatcher.forward(request, response);
 
                 } catch (Exception e) {
@@ -63,14 +63,14 @@ public class LoginServlet extends HttpServlet {
                     message = "Error: " + e.getMessage();
                     request.setAttribute("message", message);
                     request.setAttribute("messageType", "alert-danger");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("voting.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/voting.jsp");
                     dispatcher.forward(request, response);
                 }
             } else {
                 message = "Please select a candidate to vote.";
                 request.setAttribute("message", message);
                 request.setAttribute("messageType", "alert-danger");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("voting.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/voting.jsp");
                 dispatcher.forward(request, response);
             }
         }
