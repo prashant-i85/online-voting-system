@@ -1,7 +1,7 @@
-package com.voting.dao;
+package dao;
 
-import com.voting.model.Voter;
-import com.voting.util.DBConnection;
+import model.Voter;
+import connect.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
