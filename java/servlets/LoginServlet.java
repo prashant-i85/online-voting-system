@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
             if (voter != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("voter", voter);
-                response.sendRedirect("voting.jsp");
+                response.sendRedirect("WEB-INF/voting.jsp");
             } else {
                 response.sendRedirect("WEB-INF/login.jsp?error=Invalid credentials");
             }
