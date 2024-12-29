@@ -1,4 +1,4 @@
-package com.voting.util;
+package connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
