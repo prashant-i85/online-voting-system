@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Vote</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="../js/validation.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <h1>Vote in the Election</h1>
