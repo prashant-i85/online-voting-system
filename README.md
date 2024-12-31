@@ -16,6 +16,44 @@ This program helps its verified users to cast votes for candidates in an electio
 - **Improved UI/UX**: Advanced styling and animations for a better user experience.
 - **Future Improvements**: Use of HTML or CSS enhancements.
 
+## Project Structure
+OnlineVotingSystem/
+├── java/
+│   ├── dao/
+│   │   ├── VoterDAO.java
+│   │   ├── ElectionDAO.java
+│   │   ├── CandidateDAO.java
+│   │   └── VoteDAO.java
+│   ├── model/
+│   │   ├── Voter.java
+│   │   ├── Election.java
+│   │   ├── Candidate.java
+│   │   └── Vote.java
+│   ├── servlets/
+│   │   ├── LoginServlet.java
+│   │   ├── RegisterServlet.java
+│   │   ├── VoteServlet.java
+│   │   ├── AdminDashboardServlet.java
+│   │   └── ResultServlet.java
+│   └── connect/
+│       └── DBConnection.java
+├── webapp/
+│   ├── WEB-INF/
+│   │   ├── index.html
+│   │   ├── login.jsp
+│   │   ├── register.jsp
+│   │   ├── results.jsp
+│   │   ├── voting.jsp
+│   │   └── web.xml
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│       └── validation.js
+├── schema.sql
+├── ProjectStructure.txt
+├── README.md
+└── pom.xml
+
 
 ## Setup Instructions
 1. Clone the repository from GitHub.
