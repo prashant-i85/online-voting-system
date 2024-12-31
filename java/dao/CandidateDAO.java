@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CandidateDAO {
-    // Method to get the list of candidates
     public List<Candidate> getCandidates() throws SQLException {
         List<Candidate> candidates = new ArrayList<>();
         Connection conn = DBConnection.getConnection();
@@ -28,7 +27,6 @@ public class CandidateDAO {
         return candidates;
     }
 
-    // Method to cast a vote
     public boolean castVote(int candidateId) throws SQLException {
         Connection conn = DBConnection.getConnection();
         String query = "INSERT INTO votes (candidate_id) VALUES (?)";
