@@ -6,7 +6,15 @@ public class Voter {
     private String email;
     private String password;
 
-    // Getters and Setters
+    public Voter() {}
+
+    public Voter(int voterId, String name, String email, String password) {
+        this.voterId = voterId;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
     public int getVoterId() {
         return voterId;
     }
