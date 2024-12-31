@@ -14,7 +14,6 @@ public class VoteServlet extends HttpServlet {
 
         if (candidateId != null && !candidateId.isEmpty()) {
             try {
-                // Process the vote
                 CandidateDAO candidateDAO = new CandidateDAO();
                 boolean voteProcessed = candidateDAO.castVote(Integer.parseInt(candidateId));
 
@@ -25,14 +24,12 @@ public class VoteServlet extends HttpServlet {
                     message = "There was an error processing your vote. Please try again.";
                 }
 
-                // Set message and forward to voting.jsp
                 request.setAttribute("message", message);
                 request.setAttribute("messageType", messageType);
 
-                // Retrieve updated candidates list
                 List<Candidate> candidates = candidateDAO.getCandidates();
                 request.setAttribute("candidates", candidates);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/voting.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("voting.jsp");
                 dispatcher.forward(request, response);
 
             } catch (Exception e) {
@@ -40,14 +37,14 @@ public class VoteServlet extends HttpServlet {
                 message = "Error: " + e.getMessage();
                 request.setAttribute("message", message);
                 request.setAttribute("messageType", "alert-danger");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/voting.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("voting.jsp");
                 dispatcher.forward(request, response);
             }
         } else {
             message = "Please select a candidate to vote.";
             request.setAttribute("message", message);
             request.setAttribute("messageType", "alert-danger");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/voting.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("voting.jsp");
             dispatcher.forward(request, response);
         }
     }
