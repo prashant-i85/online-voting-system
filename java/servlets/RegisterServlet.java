@@ -7,20 +7,24 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-public class LoginServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        VoterDAO voterDAO = new VoterDAO();
-        Voter voter = voterDAO.authenticateVoter(email, password);
+        Voter voter = new Voter();
+        voter.setName(name);
+        voter.setEmail(email);
+        voter.setPassword(password);
 
-        if (voter != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("voter", voter);
-            response.sendRedirect("voting.jsp");
+        VoterDAO voterDAO = new VoterDAO();
+        boolean success = voterDAO.registerVoter(voter);
+
+        if (success) {
+            response.sendRedirect("login.jsp?registered=true");
         } else {
-            response.sendRedirect("login.jsp?error=true");
+            response.sendRedirect("register.jsp?error=true");
         }
     }
 }
