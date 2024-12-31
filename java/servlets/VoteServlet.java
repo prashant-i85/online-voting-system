@@ -1,51 +1,35 @@
 package servlets;
 
-import dao.CandidateDAO;
-import javax.servlet.ServletException;
+import dao.VoteDAO;
+import model.Vote;
+
+import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.List;
 
 public class VoteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String candidateId = request.getParameter("candidateId");
-        String message = "";
-        String messageType = "alert-danger";
+        int candidateId = Integer.parseInt(request.getParameter("candidateId"));
+        int electionId = Integer.parseInt(request.getParameter("electionId"));
+        Voter voter = (Voter) request.getSession().getAttribute("voter");
 
-        if (candidateId != null && !candidateId.isEmpty()) {
-            try {
-                CandidateDAO candidateDAO = new CandidateDAO();
-                boolean voteProcessed = candidateDAO.castVote(Integer.parseInt(candidateId));
+        if (voter == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
 
-                if (voteProcessed) {
-                    message = "Your vote has been successfully cast!";
-                    messageType = "alert-success";
-                } else {
-                    message = "There was an error processing your vote. Please try again.";
-                }
+        VoteDAO voteDAO = new VoteDAO();
+        Vote vote = new Vote();
+        vote.setVoterId(voter.getVoterId());
+        vote.setCandidateId(candidateId);
+        vote.setElectionId(electionId);
 
-                request.setAttribute("message", message);
-                request.setAttribute("messageType", messageType);
+        boolean success = voteDAO.castVote(vote);
 
-                List<Candidate> candidates = candidateDAO.getCandidates();
-                request.setAttribute("candidates", candidates);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("voting.jsp");
-                dispatcher.forward(request, response);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                message = "Error: " + e.getMessage();
-                request.setAttribute("message", message);
-                request.setAttribute("messageType", "alert-danger");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("voting.jsp");
-                dispatcher.forward(request, response);
-            }
+        if (success) {
+            response.sendRedirect("results.jsp");
         } else {
-            message = "Please select a candidate to vote.";
-            request.setAttribute("message", message);
-            request.setAttribute("messageType", "alert-danger");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("voting.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("voting.jsp?error=true");
         }
     }
 }
