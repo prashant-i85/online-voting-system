@@ -1,10 +1,21 @@
-// Validate registration form
-function validateRegisterForm() {
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+function validateLogin() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
 
-    if (password !== confirmPassword) {
-        alert("Passwords do not match!");
+    if (email === "" || password === "") {
+        alert("Email and Password cannot be empty.");
+        return false;
+    }
+    return true;
+}
+
+function validateRegister() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    if (name === "" || email === "" || password === "") {
+        alert("All fields are required.");
         return false;
     }
     return true;
