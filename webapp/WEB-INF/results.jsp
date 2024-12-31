@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Results</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <h1>Election Results</h1>
@@ -9,7 +10,7 @@
         <tr>
             <th>Candidate Name</th>
             <th>Party</th>
-            <th>Votes</th>
+            <th>Total Votes</th>
         </tr>
         <c:forEach var="candidate" items="${candidates}">
             <tr>
