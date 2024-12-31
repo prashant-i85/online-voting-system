@@ -18,11 +18,19 @@ OnlineVotingSystem/
 │   │   └── ResultServlet.java
 │   └── connect/
 │       └── DBConnection.java
-├── web/
-│   ├── index.html
-│   ├── web.xml
-│   ├── login.jsp
-│   ├── register.jsp
-│   ├── voting.jsp
-│   └── results.jsp
-└── pom.xml (if using Maven)
+├── webapp/
+│   ├── WEB-INF/
+│   │   ├── index.html
+│   │   ├── login.jsp
+│   │   ├── register.jsp
+│   │   ├── results.jsp
+│   │   ├── voting.jsp
+│   │   └── web.xml
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│       └── validation.js
+├── schema.sql
+├── ProjectStructure.txt
+├── README.md
+└── pom.xml
